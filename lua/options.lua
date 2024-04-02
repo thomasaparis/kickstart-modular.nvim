@@ -61,5 +61,7 @@ vim.opt.scrolloff = 10
 
 -- My Additions:
 vim.opt.conceallevel = 1
+vim.opt.foldlevelstart = 50
+vim.opt.foldmethod = 'indent'
 
 -- vim: ts=2 sts=2 sw=2 et
