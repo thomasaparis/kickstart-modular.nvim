@@ -40,7 +40,7 @@ require('lazy').setup({
 
   require 'kickstart/plugins/cmp',
 
-  require 'kickstart/plugins/onedark',
+  require 'kickstart/plugins/tokyo-night',
 
   require 'kickstart/plugins/todo-comments',
 
