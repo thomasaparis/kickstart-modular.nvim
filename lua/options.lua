@@ -73,4 +73,12 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 -- vim.opt.smartindent = true
 
+-- Undo saved
+local prefix = vim.env.XDG_CONFIG_HOME or vim.fn.expand '~/.config'
+
+vim.opt.undofile = true
+vim.opt.undodir = { prefix .. '/nvim/.undo//' }
+vim.opt.undolevels = 1000
+vim.opt.undoreload = 10000
+
 -- vim: ts=2 sts=2 sw=2 et
