@@ -48,4 +48,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Tmux Sessionizer
+-- vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
+
+-- greatest remap ever, stops register overwrite when pasting over visual selection
+-- vim.keymap.set('x', '<leader>p', [["_dP]]) -- sends deleted text to void register
+vim.keymap.set({ 'n', 'x' }, '<leader>p', [["0p]], { desc = 'paste from yank register' }) -- keeps deleted text
+
+-- Quick tab navigation
+vim.keymap.set('n', '<leader>1', '1gt', { noremap = true, silent = true, desc = 'Move to tab 1' })
+vim.keymap.set('n', '<leader>2', '2gt', { noremap = true, desc = 'Move to tab 2' })
+vim.keymap.set('n', '<leader>3', '3gt', { noremap = true, desc = 'Move to tab 3' })
+vim.keymap.set('n', '<leader>4', '4gt', { noremap = true, desc = 'Move to tab 4' })
+vim.keymap.set('n', '<leader>5', '5gt', { noremap = true, desc = 'Move to tab 5' })
+
 -- vim: ts=2 sts=2 sw=2 et
