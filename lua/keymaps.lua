@@ -62,4 +62,7 @@ vim.keymap.set('n', '<leader>3', '3gt', { noremap = true, desc = 'Move to tab 3'
 vim.keymap.set('n', '<leader>4', '4gt', { noremap = true, desc = 'Move to tab 4' })
 vim.keymap.set('n', '<leader>5', '5gt', { noremap = true, desc = 'Move to tab 5' })
 
+-- More powerful s(ubstitute)
+vim.keymap.set('n', '<leader>S', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 -- vim: ts=2 sts=2 sw=2 et
