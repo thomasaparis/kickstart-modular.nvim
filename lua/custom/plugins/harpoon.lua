@@ -1,6 +1,5 @@
 return {
   'ThePrimeagen/harpoon',
-  branch = 'harpoon2',
   dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
     vim.keymap.set('n', 'hx', require('harpoon.mark').add_file)
