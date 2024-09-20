@@ -93,7 +93,7 @@ return {
               if not result then
                 return print('Invalid choice: ' .. i)
               end
-              vim.fn.setreg('"', result)
+              vim.fn.setreg('+', result)
               vim.notify('Copied: ' .. result)
             end
           end,
