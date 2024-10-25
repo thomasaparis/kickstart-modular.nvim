@@ -17,6 +17,8 @@ return {
         'vim',
         'bash',
         'elixir',
+        'heex',
+        'eex',
         'markdown',
         'markdown_inline',
       },
