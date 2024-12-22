@@ -12,7 +12,7 @@ return {
       --   desc = '[F]ormat buffer',
       -- },
       {
-        '<leader>ft',
+        '<leader>taf',
         function()
           local conform = require 'conform'
           if vim.g.disable_autoformat then
@@ -24,7 +24,7 @@ return {
           end
         end,
         mode = 'n',
-        desc = 'Toggle format on save',
+        desc = '[T]oggle [A]uto [F]ormat on save',
       },
     },
     opts = {
