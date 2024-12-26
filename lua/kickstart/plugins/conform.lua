@@ -58,6 +58,7 @@ return {
         typescriptreact = { { 'prettierd', 'prettier' } },
         css = { { 'prettierd', 'prettier' } },
         -- javascript = { { 'prettierd', 'prettier' } },
+        markdown = { 'prettier' },
       },
     },
     config = function(_, opts)
