@@ -99,7 +99,7 @@ return {
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', function()
-        builtin.find_files { hidden = true }
+        builtin.find_files { find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } }
       end, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<C-p>', function()
         builtin.git_files { hidden = true }
