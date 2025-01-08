@@ -66,7 +66,7 @@ vim.opt.foldlevelstart = 50
 vim.opt.foldmethod = 'indent'
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
-vim.opt.colorcolumn = '80'
+-- vim.opt.colorcolumn = '80'
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
