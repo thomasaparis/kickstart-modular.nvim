@@ -57,7 +57,7 @@ return {
         typescript = { { 'prettierd', 'prettier' } },
         typescriptreact = { { 'prettierd', 'prettier' } },
         css = { { 'prettierd', 'prettier' } },
-        -- javascript = { { 'prettierd', 'prettier' } },
+        javascript = { { 'prettierd', 'prettier' } },
         markdown = { 'prettier' },
       },
     },
