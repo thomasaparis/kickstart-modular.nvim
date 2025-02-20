@@ -59,6 +59,10 @@ vim.keymap.set('n', '<leader>3', '3gt', { noremap = true, desc = 'Move to tab 3'
 vim.keymap.set('n', '<leader>4', '4gt', { noremap = true, desc = 'Move to tab 4' })
 vim.keymap.set('n', '<leader>5', '5gt', { noremap = true, desc = 'Move to tab 5' })
 
+vim.keymap.set('n', '<leader>yp', function()
+  vim.cmd 'let @+ = expand("%:p:.") . ":" . line(".")'
+end, { desc = 'Copy relative file path and line number to clipboard' })
+
 -- More powerful s(ubstitute)
 vim.keymap.set('n', '<leader>S', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = '[S]ubstiute word under cursor' })
 
