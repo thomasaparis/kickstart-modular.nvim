@@ -50,14 +50,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- greatest remap ever, stops register overwrite when pasting over visual selection
 -- vim.keymap.set('x', '<leader>p', [["_dP]]) -- sends deleted text to void register
-vim.keymap.set({ 'n', 'x' }, '<leader>p', [["0p]], { desc = 'paste from yank register' }) -- keeps deleted text
+vim.keymap.set({ 'n', 'x' }, '<leader>p', [["0p]], { desc = '[p]aste from yank register' }) -- keeps deleted text
 
 -- Quick tab navigation
-vim.keymap.set('n', '<leader>1', '1gt', { noremap = true, silent = true, desc = 'Move to tab 1' })
-vim.keymap.set('n', '<leader>2', '2gt', { noremap = true, desc = 'Move to tab 2' })
-vim.keymap.set('n', '<leader>3', '3gt', { noremap = true, desc = 'Move to tab 3' })
-vim.keymap.set('n', '<leader>4', '4gt', { noremap = true, desc = 'Move to tab 4' })
-vim.keymap.set('n', '<leader>5', '5gt', { noremap = true, desc = 'Move to tab 5' })
+vim.keymap.set('n', '<leader>6', '1gt', { noremap = true, silent = true, desc = 'Tab 1' })
+vim.keymap.set('n', '<leader>7', '2gt', { noremap = true, desc = 'Tab 2' })
+vim.keymap.set('n', '<leader>8', '3gt', { noremap = true, desc = 'Tab 3' })
+vim.keymap.set('n', '<leader>9', '4gt', { noremap = true, desc = 'Tab 4' })
+vim.keymap.set('n', '<leader>0', '5gt', { noremap = true, desc = 'Tab 5' })
 
 vim.keymap.set('n', '<leader>yp', function()
   vim.cmd 'let @+ = expand("%:p:.") . ":" . line(".")'
