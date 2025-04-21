@@ -190,7 +190,9 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-
+        ltex = {
+          filetypes = { 'tex' },
+        },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
