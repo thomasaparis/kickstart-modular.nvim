@@ -9,7 +9,6 @@ return {
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for install instructions
@@ -94,15 +93,59 @@ return {
         }
       end
 
+      -- Support "file:line" syntax: strip :line from search, jump after opening
+      local goto_line_number = nil
+      local function file_goto_line_opts()
+        return {
+          on_input_filter_cb = function(prompt)
+            local file, lnum = prompt:match '^(.+):(%d+)%s*$'
+            if lnum then
+              goto_line_number = tonumber(lnum)
+              return { prompt = file }
+            end
+            goto_line_number = nil
+          end,
+          attach_mappings = function(prompt_bufnr, map)
+            actions.select_default:enhance {
+              post = function()
+                if goto_line_number then
+                  local line = math.min(goto_line_number, vim.api.nvim_buf_line_count(0))
+                  vim.api.nvim_win_set_cursor(0, { line, 0 })
+                  goto_line_number = nil
+                end
+              end,
+            }
+            return true
+          end,
+        }
+      end
+
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', function()
-        builtin.find_files { find_command = { 'rg', '--files', '--hidden', '-g', '!.git', '-g', '.env*' } }
+        builtin.find_files(vim.tbl_extend('force', file_goto_line_opts(), {
+          find_command = {
+            'rg', '--files', '--hidden', '--no-ignore-vcs',
+            '-g', '!.git',
+            '-g', '!node_modules',
+            '-g', '!.next',
+            '-g', '!dist',
+            '-g', '!build',
+            '-g', '!.cache',
+            '-g', '!__pycache__',
+            '-g', '!*.pyc',
+            '-g', '!.DS_Store',
+            '-g', '!coverage',
+            '-g', '!.turbo',
+            '-g', '!target',
+            '-g', '!vendor',
+          },
+        }))
       end, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<C-p>', function()
-        builtin.git_files { hidden = true }
+        builtin.git_files(vim.tbl_extend('force', file_goto_line_opts(), { hidden = true }))
       end)
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
